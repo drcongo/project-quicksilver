@@ -15,11 +15,15 @@
     action: easy_install name=pip
 
   - name: install fireball
-    action: pip name={{ item }} state=present
+    pip: name={{ item }} state=present
     with_items:
       - pyzmq
       - pyasn1
       - PyCrypto
+
+  - name: install python keyczar
+    pip: name=$item extra_args='--pre'
+    with_items:
       - python-keyczar
            
   # - name: install fireball
